@@ -17,17 +17,44 @@ function App() {
       }
     });
   }
+
+  function handleAddProject(newProject) {
+
+    newProject = {
+      ...newProject,
+      Id: Math.random()
+    }
+
+    setProjecrsTate((prevState) => {
+      return {
+        ...prevState,
+        selectedProjetctId: undefined,
+        projects: [...prevState.projects, newProject]
+      }
+    });
+  }
+
+  function handleCancel() {
+    setProjecrsTate((prevState) => {
+      return {
+        ...prevState,
+        selectedProjetctId: undefined,
+      }
+    });
+  }
+
   let content;
   if (projectsState.selectedProjetctId === null) {
-    content = (<NewProject />)
+    content = (<NewProject onAdd={handleAddProject} onCancel={handleCancel} />)
   } else {
     content = (<NoProjectSelected onStartAddProject={handleStartAddProjectI} />
     )
   }
 
+
   return (
     <main className="h-screen my-8 flex gap-8 ">
-      <ProjectSiteBar onStartAddProject={handleStartAddProjectI} />
+      <ProjectSiteBar onStartAddProject={handleStartAddProjectI} projectsList={projectsState.projects} />
       {content}
     </main>
   );
