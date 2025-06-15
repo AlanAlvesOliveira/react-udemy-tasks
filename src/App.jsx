@@ -2,10 +2,9 @@ import { useState } from "react";
 import NewProject from "./components/NewProject";
 import NoProjectSelected from "./components/NoProjectSelected";
 import ProjectSiteBar from "./components/ProjectSideBar";
-import SeletedProject from "./components/SeletedProject";
+import SelectedProject from "./components/SelectedProject";
 
 function App() {
-
 
   const [projectsState, setProjectsState] = useState({
     selectedProjectId: undefined,
@@ -13,35 +12,27 @@ function App() {
       "Title": "Projeto numero 1",
       "Description": "Descrição completa e detalhada do projeto\n\nFim da descrição",
       "DueDate": "2025-06-15",
-      "Id": 0.2526887347555048
+      "Id": 1
     }],
     tasks: []
   });
 
   function handleAddTask(text) {
-
     setProjectsState((prevState) => {
-
       const taskId = Math.random();
       const newTask = {
         id: taskId,
         text: text,
         projectId: prevState.selectedProjectId,
       }
-
-
       return {
         ...prevState,
         tasks: [newTask, ...prevState.tasks]
       }
     });
-
   }
 
   function handleDeleteTask(id) {
-
-
-
     setProjectsState(prevState => {
       return {
         ...prevState,
@@ -50,10 +41,9 @@ function App() {
         )
       }
     });
-
   }
 
-  function handleStartAddProjectI() {
+  function handleStartAddProject() {
     setProjectsState(prevState => {
       return {
         ...prevState,
@@ -113,27 +103,25 @@ function App() {
   )
 
   let content = (
-    <SeletedProject
+    <SelectedProject
       project={selectedProject}
       onDelete={handleDeleteProject}
       onAddTask={handleAddTask}
       onDeleteTask={handleDeleteTask}
-      tasks={projectsState.tasks}
+      tasks={projectsState.tasks.filter(x => x.projectId === projectsState.selectedProjectId)}
     />
   )
 
   if (projectsState.selectedProjectId === null) {
     content = <NewProject onAdd={handleAddProject} onCancel={handleCancel} />
   } else if (projectsState.selectedProjectId === undefined) {
-    content = <NoProjectSelected onStartAddProject={handleStartAddProjectI} />
+    content = <NoProjectSelected onStartAddProject={handleStartAddProject} />
   }
-
-  console.log(projectsState);
 
   return (
     <main className="h-screen my-8 flex gap-8 ">
       <ProjectSiteBar
-        onStartAddProject={handleStartAddProjectI}
+        onStartAddProject={handleStartAddProject}
         projectsList={projectsState.projects}
         onSelectProject={handleSelectProject}
         selectedProjectId={projectsState.selectedProjectId}
