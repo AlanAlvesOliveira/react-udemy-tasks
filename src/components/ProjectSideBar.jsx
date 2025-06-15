@@ -15,11 +15,9 @@ export default function ProjectSiteBar({ onStartAddProject, projectsList, onSele
                     let cssClasses = "w-full text-left px-2 py-1 rounded-sm my-1 hover:text-stone-200 hover:bg-stone-800"
 
                     if (project.Id === selectedProjectId) {
-                        cssClasses += " bg-stone-800 text-stone-200"
-
+                        cssClasses += " text-stone-200 bg-stone-800"
                     } else {
                         cssClasses += " text-stone-400"
-
                     }
 
                     return (

@@ -8,6 +8,12 @@ export default function NewTask({ onAdd }) {
         setEnteredTask(event.target.value);
     }
 
+    function handleKeyDown(event) {
+        if (event.key === 'Enter' && enteredTask.trim() !== '') {
+            handleClick();
+        }
+    }
+
     function handleClick() {
         onAdd(enteredTask)
         setEnteredTask('');
@@ -17,11 +23,15 @@ export default function NewTask({ onAdd }) {
         <div className="flex items-center gap-4">
             <input
                 onChange={handleChange}
+                onKeyDown={handleKeyDown}
                 type="text"
                 className="2-64 px-2 py-1 rounded-sm bg-stone-200"
                 value={enteredTask}
             />
-            <button onClick={handleClick} className="text-stone-700 hover:text-stone-900">Add Task</button>
+            <button
+                onClick={handleClick} className="text-stone-700 hover:text-stone-900">
+                Add Task
+            </button>
         </div>
     )
 }

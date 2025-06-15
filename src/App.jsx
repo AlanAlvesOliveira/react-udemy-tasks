@@ -9,12 +9,21 @@ function App() {
   const [projectsState, setProjectsState] = useState({
     selectedProjectId: undefined,
     projects: [{
-      "Title": "Projeto numero 1",
+      "Title": "Projeto 1",
       "Description": "Descrição completa e detalhada do projeto\n\nFim da descrição",
       "DueDate": "2025-06-15",
-      "Id": 1
+      "Id": 0.9949666975913712
+    }, {
+      "Title": "Projeto 2",
+      "Description": "Descrição completa e detalhada do projeto\n\nFim da descrição",
+      "DueDate": "2025-06-14",
+      "Id": 0.9949666975913711
     }],
-    tasks: []
+    tasks: [{
+      "id": 0.9949666975913713,
+      "text": "Task 1",
+      "projectId": 0.9949666975913712
+    }]
   });
 
   function handleAddTask(text) {
@@ -117,6 +126,7 @@ function App() {
   } else if (projectsState.selectedProjectId === undefined) {
     content = <NoProjectSelected onStartAddProject={handleStartAddProject} />
   }
+
 
   return (
     <main className="h-screen my-8 flex gap-8 ">
