@@ -43,7 +43,7 @@ export default function NewProject() {
                     Please make sure you provide a valid value for every input field.
                 </p>
             </Modal>
-            <div className="w-[35rem] mt-16 ">
+            <div className="w-[35rem] mt-16 animation-content ">
                 <menu className="flex items-center justify-end gap-4 my-4">
                     <li>
                         <button onClick={handleCancel} className="text-stone-800 hover:text-stone-950">Cancel</button>

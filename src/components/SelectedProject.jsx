@@ -20,7 +20,8 @@ export default function SelectedProject() {
 
     return (
 
-        <div className="w-[35rem] mt-16">
+        //essa key é necessaria para o react "remontar" o component, assim ele realiza a animation
+        <div key={project.Id} className="w-[35rem] mt-16 animation-content">
             <header className="pb-4 mb-4 boder-b-2 border-stone-300">
                 <div className="flex items-center justify-between">
                     <h1 className="text-3xl font-bold text-stone-600 mb-2">{project.Title}</h1>

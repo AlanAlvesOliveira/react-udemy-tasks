@@ -1,3 +1,37 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+
+.animation-modal {
+    animation: fade-slide-in-from-top .3s ease-in-out;
+}
+
+.animation-content {
+    animation: fade-slide-in-from-right .3s ease-in-out;
+}
+
+
+@keyframes fade-slide-in-from-top {
+    0% {
+        opacity: 0;
+        transform: translateY(-50px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fade-slide-in-from-right {
+    0% {
+        opacity: 0;
+        transform: translateX(50px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}

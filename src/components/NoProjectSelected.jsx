@@ -10,7 +10,7 @@ export default function NoProjectSelected() {
     } = useContext(ProjectContext);
 
     return (
-        <div className="mt-24 text-center w-2/3">
+        <div className="mt-24 text-center w-2/3 animation-content">
             <img src={noProjectImage} alt="an ampty task list" className="w-16 h-16 object-contain mx-auto" />
             <h2 className="text-xl font-bold text-stone-500 my-4 ">No project Selected</h2>
             <p className="text-stone-400 mb-4">Select a project or get started with a new one</p>
