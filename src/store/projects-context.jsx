@@ -1,9 +1,11 @@
-import { createContext, useState } from "react";
+import { createContext, useMemo, useState } from "react";
 
 export const ProjectContext = createContext({
     projects: [],
     selectedProjectId: undefined,
     tasks: [],
+    selectedProject: null, // Adicionado para fácil acesso
+    projectTasks: [], // Adicionado para fácil acesso
     handleAddTask: () => { },
     handleDeleteTask: () => { },
     handleStartAddProject: () => { },
@@ -11,11 +13,11 @@ export const ProjectContext = createContext({
     handleCancel: () => { },
     handleSelectProject: () => { },
     handleDeleteProject: () => { },
-    getSelectedProject: () => { },
-    getProjectTasks: () => { }
+
 });
 
 export default function ProjectContextProvider({ children }) {
+
     const [projectsState, setProjectsState] = useState({
         selectedProjectId: undefined,
         projects: [{
@@ -28,6 +30,7 @@ export default function ProjectContextProvider({ children }) {
     });
 
     function handleAddTask(text) {
+
         setProjectsState((prevState) => {
             const taskId = Math.random();
             const newTask = {
@@ -110,22 +113,22 @@ export default function ProjectContextProvider({ children }) {
         });
     }
 
-    function getSelectedProject() {
-        return projectsState.projects.find(
-            project => project.Id === projectsState.selectedProjectId
-        );
-    }
 
-    function getProjectTasks(projectId) {
-        return projectsState.tasks.filter(
-            task => task.projectId === projectId
-        );
-    }
+    const selectedProject = projectsState.projects.find(
+        project => project.Id === projectsState.selectedProjectId
+    );
 
-    const projectValues = {
+    const projectTasks = projectsState.tasks.filter(
+        task => task.projectId === projectsState.selectedProjectId
+    );
+
+    //useMemo => sugestão da IA, otimiza o uso de memoria
+    const projectValues = useMemo(() => ({
         projects: projectsState.projects,
         selectedProjectId: projectsState.selectedProjectId,
         tasks: projectsState.tasks,
+        selectedProject,
+        projectTasks,
         handleAddTask,
         handleDeleteTask,
         handleStartAddProject,
@@ -133,9 +136,7 @@ export default function ProjectContextProvider({ children }) {
         handleCancel,
         handleSelectProject,
         handleDeleteProject,
-        getSelectedProject,
-        getProjectTasks
-    };
+    }), [projectsState, selectedProject, projectTasks]);
 
     return (
         <ProjectContext.Provider value={projectValues}>

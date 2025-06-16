@@ -11,15 +11,12 @@ export default function SelectedProject() {
     // });
 
     const {
-        projects,
-        selectedProjectId,
-        handleDeleteProject
+        handleDeleteProject,
+        selectedProject
     } = useContext(ProjectContext);
 
 
-    const project = projects.find(
-        (project) => project.Id === selectedProjectId
-    )
+    const project = selectedProject;
 
     return (
 

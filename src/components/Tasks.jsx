@@ -5,12 +5,11 @@ import { ProjectContext } from "../store/projects-context";
 export default function Tasks() {
 
     const {
-        tasks: todasTasks,
+        projectTasks,
         handleDeleteTask,
-        selectedProjectId
     } = useContext(ProjectContext);
 
-    const tasks = todasTasks.filter(x => x.projectId === selectedProjectId);
+    const tasks = projectTasks;
 
     return (
         <section>
