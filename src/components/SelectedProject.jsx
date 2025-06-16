@@ -1,6 +1,6 @@
 import { useContext } from "react";
 import Tasks from "./Tasks";
-import { ProjectContext } from "../store/projects-context";
+import { ProjectContextReducer } from "../store/project-context-reducer";
 
 export default function SelectedProject() {
 
@@ -13,7 +13,7 @@ export default function SelectedProject() {
     const {
         handleDeleteProject,
         selectedProject
-    } = useContext(ProjectContext);
+    } = useContext(ProjectContextReducer);
 
 
     const project = selectedProject;

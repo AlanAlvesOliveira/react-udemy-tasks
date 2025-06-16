@@ -1,13 +1,13 @@
 import { useContext } from "react";
 import NewTask from "./NewTask";
-import { ProjectContext } from "../store/projects-context";
+import { ProjectContextReducer } from "../store/project-context-reducer";
 
 export default function Tasks() {
 
     const {
         projectTasks,
         handleDeleteTask,
-    } = useContext(ProjectContext);
+    } = useContext(ProjectContextReducer);
 
     const tasks = projectTasks;
 

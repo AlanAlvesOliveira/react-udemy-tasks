@@ -1,14 +1,15 @@
 import { useContext, useRef } from "react";
 import Input from "./Input";
 import Modal from "./Modal";
-import { ProjectContext } from "../store/projects-context";
+
+import { ProjectContextReducer } from "../store/project-context-reducer";
 
 export default function NewProject() {
 
     const {
         handleAddProject,
         handleCancel
-    } = useContext(ProjectContext);
+    } = useContext(ProjectContextReducer);
 
     const modal = useRef();
 

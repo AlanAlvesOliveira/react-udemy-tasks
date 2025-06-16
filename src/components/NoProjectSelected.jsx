@@ -1,13 +1,13 @@
 import { useContext } from "react";
 import noProjectImage from "../assets/no-projects.png"
 import Button from "./Button"
-import { ProjectContext } from "../store/projects-context";
+import { ProjectContextReducer } from "../store/project-context-reducer";
 
 export default function NoProjectSelected() {
 
     const {
         handleStartAddProject
-    } = useContext(ProjectContext);
+    } = useContext(ProjectContextReducer);
 
     return (
         <div className="mt-24 text-center w-2/3 animation-content">

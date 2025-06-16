@@ -1,6 +1,6 @@
 import { useContext } from "react";
 import Button from "./Button";
-import { ProjectContext } from "../store/projects-context";
+import { ProjectContextReducer } from "../store/project-context-reducer";
 
 export default function ProjectSiteBar() {
 
@@ -9,7 +9,7 @@ export default function ProjectSiteBar() {
         selectedProjectId,
         handleStartAddProject,
         handleSelectProject
-    } = useContext(ProjectContext);
+    } = useContext(ProjectContextReducer);
 
     return (
         <aside className="w-1/3 px-8 py-16 bg-stone-900 text-stone-50 md:w-72 rounded-r-xl">

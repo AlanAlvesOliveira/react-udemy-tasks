@@ -3,14 +3,11 @@ import NewProject from "./components/NewProject";
 import NoProjectSelected from "./components/NoProjectSelected";
 import ProjectSiteBar from "./components/ProjectSideBar";
 import SelectedProject from "./components/SelectedProject";
-import { ProjectContext } from "./store/projects-context";
+import { ProjectContextReducer } from "./store/project-context-reducer";
 
 function App() {
 
-  const {
-    selectedProjectId
-  } = useContext(ProjectContext);
-
+  const { selectedProjectId } = useContext(ProjectContextReducer);
 
   let content = (
     <SelectedProject />

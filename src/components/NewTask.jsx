@@ -1,11 +1,11 @@
 import { useContext, useState } from "react";
-import { ProjectContext } from "../store/projects-context";
+import { ProjectContextReducer } from "../store/project-context-reducer";
 
 export default function NewTask() {
 
     const {
         handleAddTask
-    } = useContext(ProjectContext);
+    } = useContext(ProjectContextReducer);
 
     const [enteredTask, setEnteredTask] = useState('');
 
