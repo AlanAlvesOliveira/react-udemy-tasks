@@ -1,4 +1,6 @@
-import { createContext, useReducer, useMemo } from "react";
+import { createContext, useReducer, useMemo, useEffect } from "react";
+
+const STORAGE_KEY = 'project_management_app_data';
 
 export const ProjectContextReducer = createContext({
     projects: [],
@@ -90,6 +92,13 @@ function projectsReducer(state, action) {
     }
 }
 
+function loadInitialState() {
+    const savedData = localStorage.getItem(STORAGE_KEY);
+    return savedData
+        ? JSON.parse(savedData)
+        : initialState; // usa o initialState padrão se não houver dados salvos
+}
+
 const initialState = {
     selectedProjectId: undefined,
     projects: [{
@@ -102,7 +111,12 @@ const initialState = {
 };
 
 export default function ProjectContextReducerProvider({ children }) {
-    const [state, dispatch] = useReducer(projectsReducer, initialState);
+    const [state, dispatch] = useReducer(projectsReducer, loadInitialState());
+
+    useEffect(() => {
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+    }, [state]);
+
 
     // Valores derivados
     const selectedProject = state.projects.find(
