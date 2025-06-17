@@ -20,16 +20,16 @@ export default function ProjectSiteBar() {
             <ul className="mt-8">
                 {projects.map((project, index) => {
 
-                    let cssClasses = "w-full text-left px-2 py-1 rounded-sm my-1 hover:text-stone-200 hover:bg-stone-800"
+                    let cssClasses = "w-full text-left px-3 py-3 rounded-sm border border-transparent hover:border-stone-600/60 hover:text-stone-200 hover:bg-stone-800"
 
                     if (project.Id === selectedProjectId) {
-                        cssClasses += " text-stone-200 bg-stone-800"
+                        cssClasses += " text-stone-200 bg-stone-800 border-stone-700/60"
                     } else {
                         cssClasses += " text-stone-400"
                     }
 
                     return (
-                        <li key={index} className="mb-2 p-2 rounded hover:bg-stone-800 cursor-pointer">
+                        <li key={index} className="mb-2 rounded hover:bg-stone-800 cursor-pointer">
                             <button
                                 onClick={() => handleSelectProject(project.Id)}
                                 className={cssClasses}>
