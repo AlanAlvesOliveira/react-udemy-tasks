@@ -1,6 +1,11 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
+import { ProjectContextReducer } from "../store/project-context-reducer";
 
-export default function NewTask({ onAdd }) {
+export default function NewTask() {
+
+    const {
+        handleAddTask
+    } = useContext(ProjectContextReducer);
 
     const [enteredTask, setEnteredTask] = useState('');
 
@@ -15,7 +20,7 @@ export default function NewTask({ onAdd }) {
     }
 
     function handleClick() {
-        onAdd(enteredTask)
+        handleAddTask(enteredTask)
         setEnteredTask('');
     }
 

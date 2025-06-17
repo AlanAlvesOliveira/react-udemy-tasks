@@ -1,8 +1,15 @@
-import { useRef } from "react";
+import { useContext, useRef } from "react";
 import Input from "./Input";
 import Modal from "./Modal";
 
-export default function NewProject({ onAdd, onCancel }) {
+import { ProjectContextReducer } from "../store/project-context-reducer";
+
+export default function NewProject() {
+
+    const {
+        handleAddProject,
+        handleCancel
+    } = useContext(ProjectContextReducer);
 
     const modal = useRef();
 
@@ -23,7 +30,7 @@ export default function NewProject({ onAdd, onCancel }) {
             return;
         }
 
-        onAdd(newProject);
+        handleAddProject(newProject);
     }
 
     return (
@@ -37,10 +44,10 @@ export default function NewProject({ onAdd, onCancel }) {
                     Please make sure you provide a valid value for every input field.
                 </p>
             </Modal>
-            <div className="w-[35rem] mt-16 ">
+            <div className="w-[35rem] mt-16 animation-content ">
                 <menu className="flex items-center justify-end gap-4 my-4">
                     <li>
-                        <button onClick={onCancel} className="text-stone-800 hover:text-stone-950">Cancel</button>
+                        <button onClick={handleCancel} className="text-stone-800 hover:text-stone-950">Cancel</button>
                     </li>
                     <li>
                         <button onClick={handleSave} className="bg-stone-800 text-stone-50 hover:bg-stone-950 px-6 py-2 rounded-md">Save</button>
