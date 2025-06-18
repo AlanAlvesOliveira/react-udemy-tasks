@@ -18,7 +18,7 @@ export default function Tasks() {
 
             <NewTask />
 
-            {tasks.length === 0 && (
+            {(tasks.length) === 0 && (
                 <div className="bg-stone-100/50 rounded-lg p-6 text-center my-6">
                     <p className="text-stone-600 italic">
                         This project does not have any tasks yet. Start by adding one above.

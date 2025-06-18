@@ -18,7 +18,7 @@ export default function ProjectSiteBar() {
                 <Button onClick={handleStartAddProject}>+ Add Projects</Button>
             </div>
             <ul className="mt-8">
-                {projects.map((project, index) => {
+                {projects?.map((project, index) => {
 
                     let cssClasses = "w-full text-left px-3 py-3 rounded-sm border border-transparent hover:border-stone-600/60 hover:text-stone-200 hover:bg-stone-800"
 

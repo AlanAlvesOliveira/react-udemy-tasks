@@ -1,6 +1,7 @@
 import { useContext } from "react";
 import Tasks from "./Tasks";
 import { ProjectContextReducer } from "../store/project-context-reducer";
+import Button from "./Button";
 
 export default function SelectedProject() {
 
@@ -12,9 +13,9 @@ export default function SelectedProject() {
 
     const {
         handleDeleteProject,
-        selectedProject
+        selectedProject,
+        handleEditProject
     } = useContext(ProjectContextReducer);
-
 
     const project = selectedProject;
 
@@ -25,7 +26,12 @@ export default function SelectedProject() {
             <header className="pb-4 mb-4 boder-b-2 border-stone-300">
                 <div className="flex items-center justify-between">
                     <h1 className="text-3xl font-bold text-stone-600 mb-2">{project.Title}</h1>
-                    <button onClick={handleDeleteProject} className="text-stone-600 hover:text-stone-950">Delete</button>
+                    <div className="flex justify-end gap-4">
+                        <Button onClick={handleEditProject}>Edit</Button>
+                        <Button onClick={handleDeleteProject}>Delete</Button>
+                    </div>
+
+
                 </div>
                 <p className="mb-4 text-stone-400">{project.DueDate}</p>
                 <p className="text-stone-600 whitespace-pre-wrap">{project.Description}</p>
